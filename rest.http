@@ -1,0 +1,17 @@
+###
+POST http://localhost:5100/api
+Content-Type: multipart/form-data
+
+{
+    "productName": "Muhammad",
+    "productPrice": "Muhammad",
+    "productBrand": "Muhammad",
+    "productCategory": "Muhammad",
+    "productImage": "Muhammad",
+    "productDesciption": "Muhammad"
+}
+
+###
+
+
+DELETE  http://localhost:5200/api/623e535b74c6d85e1068fa9b
