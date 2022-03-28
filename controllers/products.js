@@ -54,7 +54,6 @@ async getProducts(){
       return {ok:false,error:err};
     }
   }
-
 }
 
 module.exports = new ProductController();

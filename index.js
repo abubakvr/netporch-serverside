@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 5200;
 const URL = 'mongodb://127.0.0.1:27017/eCartDb';
 
 app.use(express.json());
-
 app.use(cors({credentials:true, origin: true}));
+app.use('/uploads', express.static(UPLOADS));
 
 mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology:true})
     .then(() => console.log('Connected'))
