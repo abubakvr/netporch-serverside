@@ -1,6 +1,5 @@
 const uuid = require('uuid').v4;
 const multer = require('multer');
-const path = require('path');
 
 const ProductCtrl = require('../controllers/products');
 
@@ -24,7 +23,7 @@ module.exports = (express, UPLOADS)=>{
     api = express.Router();
 
 //Add product
-api.post('/', upload.single('productImage'), async(req,res)=>{
+api.post('/product', upload.single('productImage'), async(req,res)=>{
     let data = JSON.parse(req.body.meta);
     let status = await ProductCtrl.addProduct(data, req.filePath);
     if(status.ok){
@@ -37,7 +36,7 @@ api.post('/', upload.single('productImage'), async(req,res)=>{
 });
 
 //Get all products
-api.get("/", async(req,res) =>{
+api.get("/products", async(req,res) =>{
   let status = await ProductCtrl.getProducts();
   if(status.ok){
     if(status.getProducts) return res.status(200).json(status.getProducts);
@@ -47,8 +46,12 @@ api.get("/", async(req,res) =>{
   }
 });
 
-//Get by Id
-api.get("/:id", async(req,res)=>{ 
+api.get("/register", async(req,res) =>{
+  res.send("Hello From backend")
+});
+
+//Get by product Id 
+api.get("/product/:id", async(req,res)=>{ 
   let {id} = req.params;
   let status = await ProductCtrl.getProduct(id);
   if(status.ok){
@@ -59,8 +62,8 @@ api.get("/:id", async(req,res)=>{
   }
 });
 
-//Updating
-api.patch("/:id", async(req,res)=>{
+//Updating product
+api.patch("/product/:id", async(req,res)=>{
   let {id} = req.params;
   let body = req.body;
   delete body.createdAt;
@@ -72,8 +75,8 @@ api.patch("/:id", async(req,res)=>{
   }
 });
 
-// Deleting One
-api.delete("/:id", async(req,res)=>{
+// Deleting One product
+api.delete("/product/:id", async(req,res)=>{
   let {id} = req.params;
   let status = await ProductCtrl.deleteProduct(id)
   if(status.ok){
@@ -82,6 +85,19 @@ api.delete("/:id", async(req,res)=>{
     res.status(500).json(status.error);
   }
 });
+
+//Register I
+api.post("/register/"), async(req, res)=>{
+  let data = JSON.parse(req.body)
+  let status = await UserCtrl.addUser(data);
+  if(status.ok){
+      console.log("Upload Successful", status.User);
+      res.status(200).json({});
+  }else{
+      console.log("error >>>", status.error);
+      res.status(500).json(status.error);
+  }
+}
 
 
 return api

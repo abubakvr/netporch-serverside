@@ -1,17 +1,22 @@
 ###
-POST http://localhost:5100/api
-Content-Type: multipart/form-data
+POST http://localhost:5200/api/users/login
+Content-Type: application/json
 
 {
-    "productName": "Muhammad",
-    "productPrice": "Muhammad",
-    "productBrand": "Muhammad",
-    "productCategory": "Muhammad",
-    "productImage": "Muhammad",
-    "productDesciption": "Muhammad"
+    "firstname": "Muhammad",
+    "lastname": "Muhammad",
+    "email": "Muhammad",
+    "country": "Muhammad",
+    "gender": "Muhammad",
+    "password": "Muhammad"
 }
 
+
 ###
+POST http://localhost:5200/api/users/login
+Content-Type: application/json
 
-
-DELETE  http://localhost:5200/api/623e535b74c6d85e1068fa9b
+{
+    "email": "Muhammad",
+    "password": "Muhammad"
+}

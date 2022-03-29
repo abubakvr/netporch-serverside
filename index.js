@@ -26,6 +26,8 @@ con.on('error', () => {
     console.log('Connection failed');
 })
 
-app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
 
-app.use('/api', require("./routes/appRoutes")(express, UPLOADS));
+app.use('/api/users', require("./routes/usersRoute")(express));
+app.use('/api/products', require("./routes/productRoute")(express, UPLOADS));
+
+app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
