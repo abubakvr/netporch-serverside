@@ -46,10 +46,6 @@ api.get("/products", async(req,res) =>{
   }
 });
 
-api.get("/register", async(req,res) =>{
-  res.send("Hello From backend")
-});
-
 //Get by product Id 
 api.get("/product/:id", async(req,res)=>{ 
   let {id} = req.params;
@@ -85,19 +81,6 @@ api.delete("/product/:id", async(req,res)=>{
     res.status(500).json(status.error);
   }
 });
-
-//Register I
-api.post("/register/"), async(req, res)=>{
-  let data = JSON.parse(req.body)
-  let status = await UserCtrl.addUser(data);
-  if(status.ok){
-      console.log("Upload Successful", status.User);
-      res.status(200).json({});
-  }else{
-      console.log("error >>>", status.error);
-      res.status(500).json(status.error);
-  }
-}
 
 
 return api

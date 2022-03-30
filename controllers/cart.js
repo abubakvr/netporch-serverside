@@ -24,15 +24,15 @@ async getCartItems(){
     }
   }
 
-  //Get Product
-  async getCartItem(id){
-    try {
-      const Item = await cartItems.findById(id);
-      return {ok:true, Item};
-    } catch (err) {
-      return {ok:false,error:err};
-    }
-  }
+  // //Get Product
+  // async getCartItem(id){
+  //   try {
+  //     const Item = await cartItems.findById(id);
+  //     return {ok:true, Item};
+  //   } catch (err) {
+  //     return {ok:false,error:err};
+  //   }
+  //}
 
   //Delete Product
   async deleteCartItem(id){
