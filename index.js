@@ -28,7 +28,7 @@ con.on('error', () => {
 
 
 app.use('/api/users', require("./routes/usersRoute")(express));
-app.use('/api/products', require("./routes/productRoute")(express, UPLOADS));
+app.use('/api/product', require("./routes/productRoute")(express, UPLOADS));
 app.use('/api/cart', require("./routes/cartRoute")(express));
 
 app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));

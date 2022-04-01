@@ -28,7 +28,7 @@ api.get("/", async(req,res) =>{
   }
 });
 
-// //Get by product Id 
+//Get by product Id 
 // api.get("/cart/:id", async(req,res)=>{ 
 //   let {id} = req.params;
 //   let status = await CartCtrl.getCartItem(id);

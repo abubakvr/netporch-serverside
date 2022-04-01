@@ -32,3 +32,6 @@ Content-Type: application/json
     "cartItemQuantity": "12",
     "cartItemImage": "imageLing"
 }
+
+###
+GET  http://localhost:5200/api/cart/

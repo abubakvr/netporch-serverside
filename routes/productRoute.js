@@ -23,7 +23,7 @@ module.exports = (express, UPLOADS)=>{
     api = express.Router();
 
 //Add product
-api.post('/product', upload.single('productImage'), async(req,res)=>{
+api.post('/', upload.single('productImage'), async(req,res)=>{
     let data = JSON.parse(req.body.meta);
     let status = await ProductCtrl.addProduct(data, req.filePath);
     if(status.ok){
@@ -36,7 +36,7 @@ api.post('/product', upload.single('productImage'), async(req,res)=>{
 });
 
 //Get all products
-api.get("/products", async(req,res) =>{
+api.get("/", async(req,res) =>{
   let status = await ProductCtrl.getProducts();
   if(status.ok){
     if(status.getProducts) return res.status(200).json(status.getProducts);
@@ -47,7 +47,7 @@ api.get("/products", async(req,res) =>{
 });
 
 //Get by product Id 
-api.get("/product/:id", async(req,res)=>{ 
+api.get("/:id", async(req,res)=>{ 
   let {id} = req.params;
   let status = await ProductCtrl.getProduct(id);
   if(status.ok){
@@ -59,7 +59,7 @@ api.get("/product/:id", async(req,res)=>{
 });
 
 //Updating product
-api.patch("/product/:id", async(req,res)=>{
+api.patch("/:id", async(req,res)=>{
   let {id} = req.params;
   let body = req.body;
   delete body.createdAt;

@@ -3,7 +3,6 @@ const bcrypt =  require('bcrypt')
 const jwt = require('jsonwebtoken')
 const Users = require('../models/users')
 
-
 module.exports = (express) => {
 
     api = express.Router();
@@ -16,42 +15,43 @@ module.exports = (express) => {
         let status = await UserCtrl.addUser(data, password);
         if(status.ok){
             console.log("Upload Successful", status.User);
-            res.status(200).json({});
+            res.status(200).json({message: "success"});
         }else{
             console.log("error >>>", status.error);
-            res.status(500).json(status.error);
+            res.status(500).json({message: "Unsuccessful"});
         }
     });
 
     //Login user
     api.post("/login/", async(req, res) => {
-        const email = req.body.email;
-        const password = req.body.password;
+        const data = req.body;
+        const email = data.email;
+        const password = data.password;
 
         Users.findOne({email})
             .then(user => {
                 if(!user){
-                    return res.status(400).json({msg: "User does not exist"})
+                    return res.status(400).json({messasge: "User does not exist"})
                 }else{
                     bcrypt.compare(password, user.password)
                     .then(isMatch => {
                         if(!isMatch) {
-                            return res.status(400).json({ msg: 'Invalid credentials'});
+                            return res.status(400).json({ messasge: 'Invalid credentials'});
                         }else{
                             jwt.sign({user: user}, 'secretkey', {expiresIn: '30h' }, (err, token) => {
-                                res.json({
-                                    user : {
-                                        username: user.username
-                                    },
-                                    token:token
+                                res.status(200).json({
+                                    user: user,
+                                    token:token,
+                                    message: "success"
                                 })
-                                console.log(user)
+                                console.log(token)
+                                console.log(message)
                             })
                         }
                     })      
                 }
             })
     })
-    
+
     return api
 }
