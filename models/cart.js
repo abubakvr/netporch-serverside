@@ -19,6 +19,10 @@ const cartItemschema = new Schema({
         type: String,
         required: true
     },
+    itemShippingPrice: {
+        type: String,
+        required: true
+    },
     cartItemQuantity: {
         type: String,
         required: true

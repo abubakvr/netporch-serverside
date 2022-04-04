@@ -43,7 +43,7 @@ api.get("/", async(req,res) =>{
 // Deleting One product
 api.delete("/:id", async(req,res)=>{
   let {id} = req.params;
-  let status = await CartCtrl.deleteItem(id)
+  let status = await CartCtrl.deleteCartItem(id)
   if(status.ok){
     res.status(200).json(status.message);
   }else{
