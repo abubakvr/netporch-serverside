@@ -18,7 +18,8 @@ async addProduct(data, imagePath){
 //Get Products
 async getProducts(){
     try {
-      const getProducts = await Products.find();
+      var mysort = { _id: -1 };
+      const getProducts = await Products.find().sort(mysort);
       return {ok:true, getProducts};
     } catch (err) {
       return {ok:false,error:err};
@@ -29,6 +30,17 @@ async getProducts(){
   async getProduct(id){
     try {
       const Product = await Products.findById(id);
+      return {ok:true, Product};
+    } catch (err) {
+      return {ok:false,error:err};
+    }
+  }
+
+  //Get Product by category
+  async getCategory(category){
+    try {
+      var query = { productCategory: category };
+      const Product = await Products.find(query);
       return {ok:true, Product};
     } catch (err) {
       return {ok:false,error:err};

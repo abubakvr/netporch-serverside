@@ -19,7 +19,8 @@ async addUser(data, password){
 //Get User
 async getUsers(){
     try {
-      const getUsers = await Users.find();
+      var mysort = { _id: -1 };
+      const getUsers = await Users.find().sort(mysort);
       return {ok:true, getUsers};
     } catch (err) {
       return {ok:false,error:err};

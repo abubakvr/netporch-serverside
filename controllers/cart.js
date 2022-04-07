@@ -17,22 +17,25 @@ async addToCart(data){
 //Get Products
 async getCartItems(){
     try {
-      const getItems = await cartItems.find();
+      var mysort = { _id: -1 };
+      const getItems = await cartItems.find().sort(mysort);
       return {ok:true, getItems};
     } catch (err) {
       return {ok:false,error:err};
     }
   }
 
-  // //Get Product
-  // async getCartItem(id){
-  //   try {
-  //     const Item = await cartItems.findById(id);
-  //     return {ok:true, Item};
-  //   } catch (err) {
-  //     return {ok:false,error:err};
-  //   }
-  //}
+  //Get Product by category
+  async getByUser(userId){
+    try {
+      var mysort = { _id: -1 };
+      var query = { userID: userId };
+      const userItems = await cartItems.find(query).sort(mysort);
+      return {ok:true, userItems};
+    } catch (err) {
+      return {ok:false,error:err};
+    }
+  }
 
   //Delete Product
   async deleteCartItem(id){

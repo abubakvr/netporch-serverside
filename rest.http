@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5200/api/cart/
+POST http://localhost:5200/api/cart/cart/624382bcf888c34a5ce169de
 Content-Type: application/json
 
 {
@@ -34,4 +34,8 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:5200/api/cart/
+GET  http://localhost:5200/api/product/category/Body
+
+
+###
+GET http://localhost:5200/api/cart/user/6246e0d11d6424b51149e95d

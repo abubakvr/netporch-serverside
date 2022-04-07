@@ -47,9 +47,21 @@ api.get("/", async(req,res) =>{
 });
 
 //Get by product Id 
-api.get("/:id", async(req,res)=>{ 
+api.get("/getone/:id", async(req,res)=>{ 
   let {id} = req.params;
   let status = await ProductCtrl.getProduct(id);
+  if(status.ok){
+    if(status.Product) return res.status(200).json(status.Product);
+    res.status(200).json({});
+  }else{
+    res.status(500).json(status.error);
+  }
+});
+
+//Get by product category
+api.get("/category/:category", async(req,res)=>{ 
+  let {category} = req.params;
+  let status = await ProductCtrl.getCategory(category);
   if(status.ok){
     if(status.Product) return res.status(200).json(status.Product);
     res.status(200).json({});
