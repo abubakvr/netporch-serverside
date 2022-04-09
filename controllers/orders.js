@@ -45,19 +45,19 @@ async getProducts(){
     } catch (err) {
       return {ok:false,error:err};
     }
-}
-
-//Get Update
-async updateProduct(id,newData){
-  try {
-    const updateProduct = await Products.findByIdAndUpdate(id, newData, {multi:false, new:true});
-    return {ok:true, Product:updateProduct};
-  } catch (err) {
-    return {ok:false,error:err};
   }
-}
 
-//Delete Product
+  //Get Update
+  async updateProduct(id,newData){
+    try {
+      const updateProduct = await Products.findByIdAndUpdate(id, newData, {multi:false, new:true});
+      return {ok:true, Product:updateProduct};
+    } catch (err) {
+      return {ok:false,error:err};
+    }
+  }
+
+  //Delete Product
   async deleteProduct(id){
     try {
       await Products.findByIdAndDelete(id);

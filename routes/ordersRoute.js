@@ -9,7 +9,7 @@ api.post('/', async(req,res)=>{
     let data = req.body;
     let status = await CartCtrl.addToCart(data);
     if(status.ok){
-    console.log("Upload Successful", status.Item,);
+        console.log("Upload Successful", status.Item,);
         res.status(200).json({message: "success"});
     }else{
         console.log("error >>>", status.error);
