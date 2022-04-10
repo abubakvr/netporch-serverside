@@ -52,6 +52,18 @@ api.get("/category/:category", async(req,res)=>{
   }
 });
 
+//Updating product
+api.patch("/quantity/:id", async(req,res)=>{
+  let {id} = req.params;
+  let quantity = req.body.quantity;
+  let status = await CartCtrl.updateQuantity(id,quantity)
+  if(status.ok){
+    res.status(200).json(status.quantity);
+  }else{
+    res.status(500).json(status.error);
+  }
+});
+
 // Deleting One product
 api.delete("/:id", async(req,res)=>{
   let {id} = req.params;

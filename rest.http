@@ -38,4 +38,9 @@ GET  http://localhost:5200/api/product/category/Body
 
 
 ###
-GET http://localhost:5200/api/cart/user/6246e0d11d6424b51149e95d
+PATCH  http://localhost:5200/api/cart/quantity/625201c9a7347bdcee691f56
+Content-Type: application/json
+
+{
+    "quantity": "2"
+}
