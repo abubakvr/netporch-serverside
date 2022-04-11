@@ -11,7 +11,11 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
-    cartItemName: {
+    itemName: {
+        type: String,
+        required: true
+    },
+    itemQuantity: {
         type: String,
         required: true
     },

@@ -6,8 +6,7 @@ class OrdersController{
 //Add order --------------------------------------------
 async addOrder(data){
     try {
-        const newOrder = new Orders(data);
-        const order = await newOrder.save();
+        const order = await Orders.collection.insertMany(data);
         return {ok:true, order};
     }catch(err){
         return {ok:false,error:err};

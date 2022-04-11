@@ -64,6 +64,17 @@ api.patch("/quantity/:id", async(req,res)=>{
   }
 });
 
+// Deleting many product
+api.delete("/clearCart/:userId", async(req,res)=>{
+  let {userId} = req.params;
+  let status = await CartCtrl.deleteManyItems(userId)
+  if(status.ok){
+    res.status(200).json({message: "success"});
+  }else{
+    res.status(500).json(status.error);
+  }
+});
+
 // Deleting One product
 api.delete("/:id", async(req,res)=>{
   let {id} = req.params;

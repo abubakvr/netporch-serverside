@@ -3,22 +3,18 @@ POST http://localhost:5200/api/orders/
 Content-Type: application/json
 
 {
-    "firstname": "Muhammad",
-    "lastname": "Muhammad",
-    "email": "Muhammad",
-    "country": "Muhammad",
-    "gender": "Muhammad",
-    "password": "Muhammad"
+    "userID": "Muhammad",
+    "itemID": "Muhammad",
+    "cartItemName": "Muhammad",
+    "dateOrdered": "Muhammad",
+    "receiverName": "Muhammad",
+    "receiverAddress": "Muhammad",
+    "receiverNo": "Muhammad",
+    "completed": "Muhammad"
 }
 
 ###
-POST http://localhost:5200/api/users/login
-Content-Type: application/json
-
-{
-    "email": "Muhammad",
-    "password": "Muhammad"
-}
+GET  http://localhost:5200/api/orders/
 
 ###
 POST http://localhost:5200/api/cart/cart/624382bcf888c34a5ce169de

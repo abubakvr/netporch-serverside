@@ -50,6 +50,16 @@ class CartController{
   }
 
   //Delete Product
+  async deleteManyItems(userId){
+    try {
+      await cartItems.collection.deleteMany({"userID": userId});
+      return {ok:true, message: "Success" };
+    } catch (err) {
+      return {ok:false,error:err};
+    }
+  }
+
+  //Delete Product
   async deleteCartItem(id){
     try {
       await cartItems.findByIdAndDelete(id);
