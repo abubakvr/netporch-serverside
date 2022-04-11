@@ -15,22 +15,26 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
-    cartItemPrice: {
+    dateOrdered: {
         type: String,
         required: true
     },
-    itemShippingPrice: {
+    receiverName: {
         type: String,
         required: true
     },
-    cartItemQuantity: {
+    receiverAddress: {
         type: String,
         required: true
     },
-    cartItemImage: {
+    receiverNo: {
+        type: String,
+        required: true
+    },
+    completed: {
         type: String,
         required: true
     }
 });
 
-module.exports  = mongoose.model('orders', orderSchema);
+module.exports  = mongoose.model('Orders', orderSchema);

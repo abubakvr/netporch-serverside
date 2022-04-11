@@ -1,71 +1,49 @@
-const Products = require('../models/products')
+const Orders = require('../models/orders')
 
-class ProductController{
+class OrdersController{
     constructor(){}
 
-//Add Products --------------------------------------------
-async addProduct(data, imagePath){
+//Add order --------------------------------------------
+async addOrder(data){
     try {
-        data.productImage = imagePath;
-        const newProduct = new Products(data);
-        const Product = await newProduct.save();
-        return {ok:true, Product};
+        const newOrder = new Orders(data);
+        const order = await newOrder.save();
+        return {ok:true, order};
     }catch(err){
         return {ok:false,error:err};
     }
 } 
 
-//Get Products
-async getProducts(){
+//Get order
+async getOrders(){
     try {
       var mysort = { _id: -1 };
-      const getProducts = await Products.find().sort(mysort);
-      return {ok:true, getProducts};
+      const getOrders = await Orders.find().sort(mysort);
+      return {ok:true, getOrders};
     } catch (err) {
       return {ok:false,error:err};
     }
   }
 
-  //Get Product
-  async getProduct(id){
+  //Get one order
+  async getOrder(id){
     try {
-      const Product = await Products.findById(id);
-      return {ok:true, Product};
+      const getOrder = await Orders.findById(id);
+      return {ok:true, getOrder};
     } catch (err) {
       return {ok:false,error:err};
     }
   }
 
-  //Get Product by category
-  async getCategory(category){
+  //Delete order
+  async deleteOrders(id){
     try {
-      var query = { productCategory: category };
-      const Product = await Products.find(query);
-      return {ok:true, Product};
-    } catch (err) {
-      return {ok:false,error:err};
-    }
-  }
-
-  //Get Update
-  async updateProduct(id,newData){
-    try {
-      const updateProduct = await Products.findByIdAndUpdate(id, newData, {multi:false, new:true});
-      return {ok:true, Product:updateProduct};
-    } catch (err) {
-      return {ok:false,error:err};
-    }
-  }
-
-  //Delete Product
-  async deleteProduct(id){
-    try {
-      await Products.findByIdAndDelete(id);
-      return {ok:true, message: "Deleted Product" };
+      await Orders.findByIdAndDelete(id);
+      return {ok:true, message: "Deleted Order" };
     } catch (err) {
       return {ok:false,error:err};
     }
   }
 }
 
-module.exports = new ProductController();
+module.exports = new OrdersController();

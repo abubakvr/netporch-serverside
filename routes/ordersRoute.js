@@ -1,15 +1,15 @@
-const CartCtrl = require('../controllers/cart')
+const OrdersCtrl = require('../controllers/orders')
 
 module.exports = (express)=>{
 
 api = express.Router();
 
-//Add product
+//Add order
 api.post('/', async(req,res)=>{
     let data = req.body;
-    let status = await CartCtrl.addToCart(data);
+    let status = await OrdersCtrl.addOrder(data);
     if(status.ok){
-        console.log("Upload Successful", status.Item,);
+        console.log("Upload Successful", status.order);
         res.status(200).json({message: "success"});
     }else{
         console.log("error >>>", status.error);
@@ -17,45 +17,33 @@ api.post('/', async(req,res)=>{
     }
 });
 
-//Get all products
+//Get all orders
 api.get("/", async(req,res) =>{
-  let status = await CartCtrl.getCartItems();
+  let status = await OrdersCtrl.getOrders();
   if(status.ok){
-    if(status.getItems) return res.status(200).json(status.getItems);
+    if(status.getOrders) return res.status(200).json(status.getOrders);
     res.status(200).json([]);
   }else{
     res.status(500).json(status.error);
   }
 });
 
-//Get by product userID
-api.get("/user/:userid", async(req,res)=>{ 
-  let {userid} = req.params;
-  let status = await CartCtrl.getByUser(userid);
+//Get by order userID
+api.get("/:id", async(req,res)=>{ 
+  let {id} = req.params;
+  let status = await OrdersCtrl.getOrder(id);
   if(status.ok){
-    if(status.userItems) return res.status(200).json(status.userItems);
+    if(status.getOrder) return res.status(200).json(status.getOrder);
     res.status(200).json({});
   }else{
     res.status(500).json(status.error);
   }
 });
 
-//Get by product category
-api.get("/category/:category", async(req,res)=>{ 
-  let {category} = req.params;
-  let status = await ProductCtrl.getCategory(category);
-  if(status.ok){
-    if(status.Product) return res.status(200).json(status.Product);
-    res.status(200).json({});
-  }else{
-    res.status(500).json(status.error);
-  }
-});
-
-// Deleting One product
+// Deleting One order
 api.delete("/:id", async(req,res)=>{
   let {id} = req.params;
-  let status = await CartCtrl.deleteCartItem(id)
+  let status = await OrdersCtrl.deleteOrders(id)
   if(status.ok){
     res.status(200).json(status.message);
   }else{
