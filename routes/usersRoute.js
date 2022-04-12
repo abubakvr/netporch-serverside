@@ -53,5 +53,20 @@ module.exports = (express) => {
             })
     })
 
+    //Get Users
+    api.get("/getusers/", async(req,res) =>{
+        let status = await UserCtrl.getUsers();
+        if(status.ok){
+        if(status.getUsers) return res.status(200).json(status.getUsers);
+        res.status(200).json([]);
+        }else{
+        res.status(500).json(status.error);
+        }
+    });
+
+
+
+    //Delete users
+
     return api
 }

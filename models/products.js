@@ -11,6 +11,10 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
+    productShipping: {
+        type: String,
+        required: true
+    },
     productBrand: {
         type: String,
         required: true
