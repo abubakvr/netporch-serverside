@@ -11,11 +11,19 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
+    itemImage: {
+        type: String,
+        required: true
+    },
     itemName: {
         type: String,
         required: true
     },
     itemQuantity: {
+        type: String,
+        required: true
+    },
+    itemPrice: {
         type: String,
         required: true
     },

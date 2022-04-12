@@ -86,7 +86,6 @@ api.delete("/:id", async(req,res)=>{
   }
 });
 
-
 return api
 
 }
