@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:5200/api/orders/
+GET  http://localhost:5200/api/users/getusers
 
 ###
 POST http://localhost:5200/api/cart/cart/624382bcf888c34a5ce169de
@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:5200/api/product/category/Body
+DELETE   http://localhost:5200/api/cart/clearcart/6246e0d11d6424b51149e95d
 
 
 ###
