@@ -7,12 +7,13 @@ const cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 5200;
 const URL = 'mongodb://127.0.0.1:27017/eCartDb';
+const URL2 = 'mongodb+srv://nodetut:boskipass@cluster0.yasfu.mongodb.net/eCart?retryWrites=true&w=majority'
 
 app.use(express.json());
 app.use(cors({credentials:true, origin: true}));
 app.use('/uploads', express.static(UPLOADS));
 
-mongoose.connect(URL, {useNewUrlParser: true, useUnifiedTopology:true})
+mongoose.connect(URL2, {useNewUrlParser: true, useUnifiedTopology:true})
     .then(() => console.log('Connected'))
     .catch((err) => console.log(err));
 
