@@ -7,15 +7,17 @@ const cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 5200;
 const URL = 'mongodb://127.0.0.1:27017/eCartDb';
-const URL2 = 'mongodb+srv://nodetut:boskipass@cluster0.yasfu.mongodb.net/eCart?retryWrites=true&w=majority'
+const URL2 =
+  "mongodb+srv://nodetut:boskipass@cluster0.yasfu.mongodb.net/netporch?retryWrites=true&w=majority";
 
 app.use(express.json());
 app.use(cors({credentials:true, origin: true}));
 app.use('/uploads', express.static(UPLOADS));
 
-mongoose.connect(URL2, {useNewUrlParser: true, useUnifiedTopology:true})
-    .then(() => console.log('Connected'))
-    .catch((err) => console.log(err));
+mongoose
+  .connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected"))
+  .catch((err) => console.log(err));
 
 const con = mongoose.connection;
 
@@ -26,7 +28,6 @@ con.on('open', () => {
 con.on('error', () => {
     console.log('Connection failed');
 })
-
 
 app.use('/api/users', require("./routes/usersRoute")(express));
 app.use('/api/product', require("./routes/productRoute")(express, UPLOADS));
