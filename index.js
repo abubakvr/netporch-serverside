@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const app = express();
 const PORT = process.env.PORT || 5200;
-const URL = 'mongodb://127.0.0.1:27017/eCartDb';
+const URL = "mongodb://127.0.0.1:27017/netporchDb";
 const URL2 =
   "mongodb+srv://nodetut:boskipass@cluster0.yasfu.mongodb.net/netporch?retryWrites=true&w=majority";
 
