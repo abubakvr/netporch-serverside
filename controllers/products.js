@@ -4,9 +4,14 @@ class ProductController {
   constructor() {}
 
   //Add Products --------------------------------------------
-  async addProduct(data, imagePath) {
+  async addProduct(data, images) {
     try {
-      data.productImage = imagePath;
+      data.productImage = [
+        { image: images[0].filename },
+        { image: images[1].filename },
+        { image: images[2].filename },
+        { image: images[3].filename },
+      ];
       const newProduct = new Products(data);
       const Product = await newProduct.save();
       return { ok: true, Product };

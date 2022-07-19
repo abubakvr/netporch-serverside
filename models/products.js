@@ -20,7 +20,7 @@ const productSchema = new Schema({
     required: true,
   },
   productColor: {
-    type: String,
+    type: Object,
     required: true,
   },
   productCategory: {
@@ -32,7 +32,7 @@ const productSchema = new Schema({
     required: true,
   },
   productImage: {
-    type: String,
+    type: Object,
     required: true,
   },
   productDescription: {

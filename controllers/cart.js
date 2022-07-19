@@ -50,6 +50,19 @@ class CartController {
     }
   }
 
+  async updateColor(id, color) {
+    try {
+      const updateColor = await cartItems.updateOne(
+        { _id: id },
+        { cartItemcColor: color },
+        { multi: false, new: true }
+      );
+      return { ok: true, color: updateColor };
+    } catch (err) {
+      return { ok: false, error: err };
+    }
+  }
+
   //Delete Product
   async deleteManyItems(userId) {
     try {

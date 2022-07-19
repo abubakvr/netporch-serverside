@@ -3,11 +3,11 @@ const UPLOADS = __dirname+'/uploads';
 const express = require('express');
 const mongoose = require('mongoose')
 const cors = require('cors')
-import { mongoURL } from "./config/keys";
+const mongoURL = require("./config/keys");
 
 const app = express();
 const PORT = process.env.PORT || 5200;
-const URL = "mongodb://127.0.0.1:27017/netporchDb";
+const URL = "mongodb://127.0.0.1:27017/shoppingDb";
 
 app.use(express.json());
 app.use(cors({credentials:true, origin: true}));
