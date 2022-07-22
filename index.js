@@ -3,7 +3,7 @@ const UPLOADS = __dirname+'/uploads';
 const express = require('express');
 const mongoose = require('mongoose')
 const cors = require('cors')
-const mongoURL = require("./config/keys");
+// const mongoURL = require("./config/keys");
 
 const app = express();
 const PORT = process.env.PORT || 5200;
