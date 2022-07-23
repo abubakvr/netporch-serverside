@@ -9,7 +9,7 @@ module.exports = (express) => {
     let status = await CartCtrl.addToCart(data);
     if (status.ok) {
       console.log("Upload Successful", status.Item);
-      res.status(200).json({ message: "success" });
+      res.status(200).json({ message: "success", item: status.Item });
     } else {
       console.log("error >>>", status.error);
       res.status(500).json(status.error);
@@ -60,23 +60,25 @@ module.exports = (express) => {
       res.status(200).json(status.quantity);
     } else {
       res.status(500).json(status.error);
+      console.log(status.error);
     }
   });
 
   //Updating product color
   api.patch("/colour/:id", async (req, res) => {
     let { id } = req.params;
-    let color = req.body.quantity;
+    let color = req.body.color;
     let status = await CartCtrl.updateColor(id, color);
     if (status.ok) {
       res.status(200).json(status.color);
     } else {
       res.status(500).json(status.error);
+      console.log(status.error);
     }
   });
 
   // Deleting many product
-  api.delete("/clearCart/:userId", async (req, res) => {
+  api.delete("/clearcart/:userId", async (req, res) => {
     let { userId } = req.params;
     let status = await CartCtrl.deleteManyItems(userId);
     if (status.ok) {

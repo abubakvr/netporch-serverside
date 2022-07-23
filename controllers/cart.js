@@ -54,7 +54,7 @@ class CartController {
     try {
       const updateColor = await cartItems.updateOne(
         { _id: id },
-        { cartItemcColor: color },
+        { cartItemColor: color },
         { multi: false, new: true }
       );
       return { ok: true, color: updateColor };
