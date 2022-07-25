@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:5200/api/users/getusers
+GET  http://localhost:5200/api/wishlist/user/12098324nefjk
 
 ###
 POST http://localhost:5200/api/cart/cart/624382bcf888c34a5ce169de
@@ -27,6 +27,19 @@ Content-Type: application/json
     "cartItemPrice": "233",
     "cartItemQuantity": "12",
     "cartItemImage": "imageLing"
+}
+
+###
+
+POST http://localhost:5200/api/wishlist/
+Content-Type: application/json
+
+{
+    "userID": "12098324nefjk",
+    "itemID": "1343298un94392",
+    "wishItemName": "Lip gloss from maria",
+    "wishItemPrice": "233",
+    "wishItemImage": "imageLink"
 }
 
 ###

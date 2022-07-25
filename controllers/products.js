@@ -41,6 +41,22 @@ class ProductController {
     }
   }
 
+  //Get Product
+  async searchProduct(key) {
+    try {
+      const Product = await Products.find({
+        $or: [
+          { productName: { $regex: key } },
+          { productBrand: { $regex: key } },
+          { productCategory: { $regex: key } },
+        ],
+      });
+      return { ok: true, Product };
+    } catch (err) {
+      return { ok: false, error: err };
+    }
+  }
+
   //Get Product by category
   async getCategory(category) {
     try {

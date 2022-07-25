@@ -58,6 +58,18 @@ module.exports = (express, UPLOADS) => {
     }
   });
 
+  //Get by product Id
+  api.get("/search/:key", async (req, res) => {
+    let { key } = req.params;
+    let status = await ProductCtrl.searchProduct(key);
+    if (status.ok) {
+      if (status.Product) return res.status(200).json(status.Product);
+      res.status(200).json({});
+    } else {
+      res.status(500).json(status.error);
+    }
+  });
+
   //Get by product category
   api.get("/category/:category", async (req, res) => {
     let { category } = req.params;
