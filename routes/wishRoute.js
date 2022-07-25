@@ -27,6 +27,18 @@ module.exports = (express) => {
     }
   });
 
+  //Get by product userID
+  api.get("/user/:userid", async (req, res) => {
+    let { userid } = req.params;
+    let status = await WishCtrl.getByUser(userid);
+    if (status.ok) {
+      if (status.userItems) return res.status(200).json(status.userItems);
+      res.status(200).json({});
+    } else {
+      res.status(500).json(status.error);
+    }
+  });
+
   // Deleting many product
   api.delete("/clearwish/:userId", async (req, res) => {
     let { userId } = req.params;
