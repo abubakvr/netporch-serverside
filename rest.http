@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:5200/api/wishlist/user/12098324nefjk
+GET  http://localhost:5200/api/product/search/Smart Watch
 
 ###
 POST http://localhost:5200/api/cart/cart/624382bcf888c34a5ce169de
@@ -52,4 +52,15 @@ Content-Type: application/json
 
 {
     "quantity": "2"
+}
+
+###
+
+POST http://localhost:5200/api/product/filter/
+Content-Type: application/json
+
+{
+    "name": [""],
+    "brand": ["Apple", "LIGE"],
+    "category": ["Smart Watch"]
 }

@@ -21,7 +21,7 @@ class ProductController {
   }
 
   //Get Products
-  async getProducts() {
+  async getProducts(keys) {
     try {
       var mysort = { _id: -1 };
       const getProducts = await Products.find().sort(mysort);
@@ -41,7 +41,7 @@ class ProductController {
     }
   }
 
-  //Get Product
+  //Search Product
   async searchProduct(key) {
     try {
       const Product = await Products.find({
@@ -52,6 +52,21 @@ class ProductController {
         ],
       });
       return { ok: true, Product };
+    } catch (err) {
+      return { ok: false, error: err };
+    }
+  }
+
+  async filterProducts(data) {
+    try {
+      const filteredProducts = await Products.find({
+        $or: [
+          { productName: data.name },
+          { productBrand: data.brand },
+          { productCategory: data.category },
+        ],
+      });
+      return { ok: true, filteredProducts };
     } catch (err) {
       return { ok: false, error: err };
     }

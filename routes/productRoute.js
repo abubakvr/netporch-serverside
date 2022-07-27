@@ -35,6 +35,21 @@ module.exports = (express, UPLOADS) => {
     }
   });
 
+  //filter product
+  api.post("/filter", async (req, res) => {
+    let data = req.body;
+    let status = await ProductCtrl.filterProducts(data);
+    if (status.ok) {
+      console.log("Filter Successful", status.filteredProducts.length);
+      if (status.filteredProducts)
+        return res.status(200).json(status.filteredProducts);
+      res.status(200).json([]);
+    } else {
+      console.log("error >>>", status.error);
+      res.status(500).json(status.error);
+    }
+  });
+
   //Get all products
   api.get("/", async (req, res) => {
     let status = await ProductCtrl.getProducts();
@@ -64,6 +79,7 @@ module.exports = (express, UPLOADS) => {
     let status = await ProductCtrl.searchProduct(key);
     if (status.ok) {
       if (status.Product) return res.status(200).json(status.Product);
+
       res.status(200).json({});
     } else {
       res.status(500).json(status.error);
