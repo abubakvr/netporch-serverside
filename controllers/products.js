@@ -57,6 +57,7 @@ class ProductController {
     }
   }
 
+  //Filter products 
   async filterProducts(data) {
     try {
       const filteredProducts = await Products.find({

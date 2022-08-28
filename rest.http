@@ -60,7 +60,6 @@ POST http://localhost:5200/api/product/filter/
 Content-Type: application/json
 
 {
-    "name": [""],
-    "brand": ["Apple", "LIGE"],
-    "category": ["Smart Watch"]
+    "brand": [""],
+    "category": [""]
 }

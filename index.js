@@ -7,7 +7,8 @@ const cors = require('cors')
 
 const app = express();
 const PORT = process.env.PORT || 5200;
-const URL = "mongodb://127.0.0.1:27017/shoppingDb";
+const uri = "mongodb+srv://boskiNode:boskiNode@cluster0.yasfu.mongodb.net/netPorchDb?retryWrites=true&w=majority";
+// const URL = "mongodb://127.0.0.1:27017/shoppingDb";
 
 app.use(express.json());
 app.use(cors({credentials:true, origin: true}));

@@ -30,7 +30,6 @@ module.exports = (express, UPLOADS) => {
       res.status(200).json({});
     } else {
       console.log("error >>>", status.error);
-
       res.status(500).json(status.error);
     }
   });
